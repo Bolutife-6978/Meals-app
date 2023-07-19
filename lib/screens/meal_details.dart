@@ -5,7 +5,7 @@ import '../models/meal.dart';
 class MealDetailsScreen extends StatelessWidget {
   const MealDetailsScreen({
     super.key,
-    required this.meal,
+    required this.meal, required this.onToggleFavourites,
   });
 
   final Meal meal;
@@ -16,7 +16,13 @@ class MealDetailsScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text(meal.title),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.favorite))],
+          actions: [
+            IconButton(
+                onPressed: () {
+                  onToggleFavourites(meal);
+                },
+                icon: Icon(Icons.favorite))
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(
